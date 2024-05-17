@@ -1,0 +1,172 @@
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Adicione o seguinte elemento <META> à sua página <HEAD>.  Se      -->
+<!--  necessário, modifique o parâmetro charset para especificar o conjunto   -->
+<!--  de caracteres de sua página HTML.                                       -->
+<!--  ----------------------------------------------------------------------  -->
+
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+<link rel="stylesheet" href="style.css">
+
+<!--  ----------------------------------------------------------------------  -->
+<!--  NOTA: Adicione o elemento <FORM> a seguir à sua página.                 -->
+<!--  ----------------------------------------------------------------------  -->
+
+<body>
+    <form id="myform" action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DD4000000HsA2"
+        method="POST">
+        <input type=hidden name="oid" value="00DD4000000HsA2">
+        <input type=hidden name="retURL" value="http://">
+
+        <!--  ----------------------------------------------------------------------  -->
+        <!--  NOTA: Estes campos são elementos de depuração opcionais. Remova o       -->
+        <!--  comentário dessas linhas se quiser testar no modo de depuração.         -->
+        <!--  <input type="hidden" name="debug" value=1>                              -->
+        <!--  <input type="hidden" name="debugEmail"                                  -->
+        <!--  value="guilherme.santiago@elera.io">                                    -->
+        <!--  ----------------------------------------------------------------------  -->
+        <div class="positionLogo">
+            <img src="./Logo-so-Galmo-preta.png" alt="" class="imageLogo">
+        </div>
+
+
+        <div class="teste">
+
+            <div class="inputBox">
+
+                <input id="first_name" maxlength="40" name="first_name" size="20" type="text" class="inputUser"
+                    required />
+                <label for="first_name" class="labelInput">Primeiro Nome</label>
+
+
+            </div>
+
+            <div class="inputBox">
+                <input id="last_name" maxlength="80" name="last_name" size="20" type="text" class="inputUser"
+                    required />
+                <label for="last_name" class="labelInput">Sobrenome</label>
+            </div>
+
+
+            <div class="inputBox">
+                <input id="email" maxlength="80" name="email" size="20" type="text" class="inputUser" required />
+                <label for="email" class="labelInput">Email</label>
+            </div>
+
+            <div class="inputBox">
+                <input id="mobile" maxlength="40" name="mobile" size="10" type="number" class="inputUser" required />
+                <label for="mobile" class="labelInput">Celular</label>
+            </div>
+            <div class="inputBox">
+
+                <label for="" class="labelInput"></label>
+                <select id="00ND400000AkFBV" name="00ND400000AkFBV" title="Empreendimento de Interesse"
+                    class="inputUser" required>
+                    <option value="-- Empreendimento de Interesse: --">
+                        -- Empreendimento de Interesse: --
+                    </option>
+                    <option value="Galmo">Galmo</option>
+                    <option value="WhatsApp">Elera</option>
+                    <option value="Totalita">Totalita</option>
+                    <option value="Catalunya">Catalunya</option>
+                </select>
+            </div>
+
+            <div class="inputBox">
+                <label for="service_channel" class="labelInput"></label>
+                <select id="00ND400000AdaH1" name="00ND400000AdaH1" title="Canal de Atendimento" class="inputUser"
+                    required>
+                    <option value="-- Canal de Atendimento: --" id="canalAtendimento">-- Canal de Atendimento: --
+                    </option>
+                    <option value="Fale conosco">Fale conosco</option>
+                    <option value="Chat">Chat</option>
+                    <option value="WhatsApp">WhatsApp</option>
+                    <option value="Telefone">Telefone</option>
+                    <option value="Loja">Loja</option>
+                    <option value="Stand">Stand</option>
+                </select>
+            </div>
+
+
+
+            <div class="inputBox">
+                <label for="lead_source" class="labelInput"></label>
+                <select id="lead_source" name="lead_source" class="inputUser" required>
+                    <option value="-- Origem do lead --" id="origemLead">-- Origem do lead --</option>
+                    <option value="Outdoor">Outdoor</option>
+                    <option value="radio">Rádio</option>
+                    <option value="Televisão">Televisão</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Publicações">Publicações</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Facebook Ads">Facebook Ads</option>
+                    <option value="Wi-Fi">Wi-Fi</option>
+                    <option value="Site GALMO">Site GALMO</option>
+                    <option value="Landing Page">Landing Page</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Tapume">Tapume</option>
+                    <option value="Anúncio de Loja">Anúncio de Loja</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="mensagem" style="color: red; font-weight: bold; font-size: 11px; margin: none; display: none;"></div>
+
+        <div class="button">
+            <input type="submit" name="submit" id="submit">
+        </div>
+
+
+
+    </form>
+</body>
+<script>
+    document.getElementById('myform').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        const fields = ['first_name', 'last_name', 'email', 'mobile'];
+        const mensagem = document.getElementById('mensagem');
+        let errorMessage = '';
+        let valid = true;
+    
+        // Reset error message
+        mensagem.style.display = 'none';
+        mensagem.textContent = '';
+    
+        fields.forEach(field => {
+            const input = document.getElementById(field);
+            if (!input.value.trim()) {
+                errorMessage += `${field} é obrigatório.\n`;
+                valid = false;
+            }
+        });
+    
+        if (!valid) {
+            mensagem.textContent = errorMessage;
+            mensagem.style.display = 'block';
+            return;
+        }
+    
+        // Envia os dados para o Salesforce
+        const formData = new FormData(this);
+    
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                // Limpa o formulário
+                this.reset();
+                // Recarrega a página
+                location.reload();
+            } else {
+                throw new Error('Erro ao enviar o formulário. Tente novamente.');
+            }
+        })
+        .catch(error => {
+            mensagem.textContent = error.message;
+            mensagem.style.display = 'block';
+        });
+    });
+</script>

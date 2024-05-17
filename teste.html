@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário | GN</title>
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        
+            *{
+            font-family:  "Montserrat", sans-serif;
+            
+        }
+
+        body {
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2c2c2c;
+            overflow: hidden;
+        }
+
+        form {
+            width: 50%;
+            height: fit-content;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .positionLogo{
+            display: flex;
+            justify-content: center;
+        }
+        .imageLogo{
+            width: 25%;
+        }
+
+        
+        .inputBox{
+            position: relative;
+            padding: 10px;
+        }
+        .inputUser{
+            background: white;
+            font-family: Open Sans, sans-serif;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            width: 100%;
+            height: 25px;
+            border-style: solid;
+            border-color: #cacaca;
+            border-radius: 5px;
+            border-width: 1px;
+        }
+        .labelInput{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0 0 1rem 1rem;
+        }
+       
+        .button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+        
+        #submit{
+            background-color: #2c2c2c;
+            padding: 1rem 2rem 1rem 2rem;
+            width: auto;
+            border: none;
+            color: rgb(255, 255, 255);
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+        <form action="">
+                    
+                <div class="positionLogo">
+                    <img src="./Logo-so-Galmo-preta.png" alt="" class="imageLogo">
+                </div>
+            
+                
+                <div class="inputBox">
+                    
+                    <label for="first_name" class="labelInput">Primeiro Nome</label>
+                    <input id="first_name" maxlength="40" name="first_name" class="inputUser" required><br>
+                </div>
+                <div class="inputBox">
+                    <label for="email" class="labelInput">Email</label>
+                    <input type="text" name="email" id="email" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="telefone" class="labelInput">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="cidade" class="labelInput">Cidade</label>
+                    <input type="text" name="cidade" id="cidade" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="estado" class="labelInput">Estado</label>
+                    <input type="text" name="estado" id="estado" class="inputUser" required>
+                </div>
+                <div class="inputBox">
+                    <label for="lead_source" class="labelInput">Origem do lead</label>
+                    <select id="lead_source" name="lead_source" lass="inputUser" required>
+                        <option value="">-- Nenhum --</option>
+                        <option value="Corretores">Corretores</option>
+                        <option value="Telefone">Telefone</option>
+                        <option value="Plantão">Plantão</option>
+                        <option value="Digital">Digital</option>
+                        <option value="Eventos">Eventos</option>
+                        <option value="Indicação">Indicação</option>
+                        <option value="Imobiliárias">Imobiliárias</option>
+                        <option value="Imprensa">Imprensa</option>
+                        <option value="Site">Site</option>
+                        <option value="Comunidade">Comunidade</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
+                <div class="button">
+                    <input type="submit" name="submit" id="submit">
+                </div>
+                
+            
+        </form>
+</body>
+</html>

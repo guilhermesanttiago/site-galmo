@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:  "Montserrat", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2c2c2c;
+    overflow: hidden;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 45%;
+  height: auto;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  }
+
+  .positionLogo{
+    display: flex;
+    justify-content: center;
+    }
+    .imageLogo{
+    width: 20%;
+    padding: 5px 5px;
+    }
+
+
+.inputBox {
+    position: relative;
+    margin: 10px 0;
+}
+
+.labelInput {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #000000;
+    padding: 0 5px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.inputUser {
+    width: 320px;
+    height: 40px;
+    font-size: 16px;
+    color: #000000;
+    padding: 0 10px;
+    background: #ffffff;
+    border: 1.2px solid #000000;
+    outline: none;
+    border-radius: 5px;
+    font-family: Open Sans, sans-serif;
+}
+
+.inputBox input:focus~label,
+.inputBox input:valid~label {
+    top: 0;
+    font-size: 1rem;
+    background-color: #f0f0f0;
+
+}
